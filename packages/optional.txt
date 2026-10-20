@@ -1,0 +1,2 @@
+# Opcionais: exigem --com-opcionais
+com.motorola.gamemode

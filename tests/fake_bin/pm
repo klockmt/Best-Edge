@@ -1,0 +1,7 @@
+#!/bin/sh
+# Mock de pm: pacotes ativos em $FAKE_STATE/packages; ações gravadas em $FAKE_STATE/actions.
+case "$1 $2" in
+  "list packages") grep -q "" "$FAKE_STATE/packages" && sed 's/^/package:/' "$FAKE_STATE/packages" ;;
+  "uninstall "*) echo "$5" >> "$FAKE_STATE/actions"; sed -i "/^$5\$/d" "$FAKE_STATE/packages" ;;
+  "install-existing "*) echo "$4" >> "$FAKE_STATE/actions" ;;
+esac

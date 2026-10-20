@@ -1,0 +1,27 @@
+# Sem perda funcional (lista conservadora Edge 50 Neo + validadas Edge 2024)
+com.motorola.brapps
+com.aura.oobe.motorola
+com.dti.motorola
+com.motorola.demo
+com.motorola.motocit
+com.motorola.motocare
+com.motorola.genie
+com.motorola.help
+com.motorola.timeweatherwidget
+com.motorola.livewallpaper3
+com.motorola.ccc.mainplm
+com.motorola.spaces
+com.facebook.katana
+com.facebook.system
+com.facebook.services
+com.facebook.appmanager
+com.amazon.appmanager
+com.handmark.expressweather
+com.inmobi.weather
+com.taboola.mip
+com.android.hotwordenrollment.okgoogle
+com.android.hotwordenrollment.xgoogle
+com.google.android.printservice.recommendation
+com.google.android.feedback
+com.google.android.partnersetup
+com.google.android.onetimeinitializer

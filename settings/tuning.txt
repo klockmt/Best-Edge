@@ -1,0 +1,25 @@
+# namespace key valor
+secure doze_enabled 1
+system peak_refresh_rate 60
+system screen_off_timeout 30000
+system keyboard_vibration_enabled 0
+system notification_light_pulse 0
+global animator_duration_scale 0.5
+global cached_apps_freezer enabled
+global mobile_data_always_on 0
+global heads_up_notifications_enabled 0
+global network_recommendations_enabled 0
+global network_scoring_ui_enabled 0
+global ambient_tilt_to_wake 0
+global ambient_touch_to_wake 0
+global disable_window_blurs 1
+global activity_starts_logging_enabled 0
+secure adaptive_sleep 0
+secure notification_bubbles 0
+global ambient_enabled 0
+secure double_tap_to_wake 0
+global location_background_throttle_interval_ms 1800000
+global ble_scan_balanced_interval_ms 1460
+global ble_scan_low_power_interval_ms 2800
+global dropbox_quota_kb 102400
+global dropbox_max_files 200
