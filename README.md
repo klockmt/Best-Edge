@@ -14,61 +14,23 @@ Scripts de shell que desativam pacotes para o usuário 0 e aplicam ajustes de `s
 | `settings/tuning.txt` | Ajustes no formato `namespace chave valor` |
 | `tests/test_debloat.sh` | Testes de integração com mocks nomeados de `pm` e `settings` |
 
-## Fluxo de execução
+## Como usar
 
-```mermaid
-flowchart TD
-    A([debloat.sh]) --> B[Ler argumentos]
-    B --> C{pm e settings disponíveis?}
-    C -->|Não| X1[Encerrar: shell sem permissão]
-    C -->|Sim| D[Listar pacotes ativos para o usuário 0]
-    D --> E[Para cada pacote de conservative.txt]
-    E --> F{Pacote ativo?}
-    F -->|Não| G[Pular]
-    F -->|Sim| H{--dry-run?}
-    H -->|Sim| I[Imprimir ação]
-    H -->|Não| J[pm uninstall -k --user 0]
-    I --> K{Mais pacotes?}
-    J --> K
-    G --> K
-    K -->|Sim| E
-    K -->|Não| L{--com-opcionais?}
-    L -->|Sim| M[Repetir para optional.txt]
-    L -->|Não| N[Aplicar tuning.txt]
-    M --> N
-    N --> O{Chave existe no aparelho?}
-    O -->|Não| P[Pular e registrar]
-    O -->|Sim| Q{Valor já igual?}
-    Q -->|Sim| R[Manter]
-    Q -->|Não| S[Gravar valor original no backup\nsomente na primeira vez]
-    S --> T{--dry-run?}
-    T -->|Sim| U[Imprimir ação]
-    T -->|Não| V[settings put]
-    P --> W{Mais ajustes?}
-    R --> W
-    U --> W
-    V --> W
-    W -->|Sim| O
-    W -->|Não| Z([Concluído: backup em /sdcard/mm-debloat-backup.txt])
-```
+Pelo PC (ADB com depuração USB ativa):
 
-## Uso
+1. `adb push . /sdcard/mm-android-debloat`
+2. `adb shell sh /sdcard/mm-android-debloat/debloat.sh --dry-run` (só mostra o que faria)
+3. `adb shell sh /sdcard/mm-android-debloat/debloat.sh` (aplica)
 
-Pelo PC, com ADB e depuração USB ativa:
+Pelo aparelho (aShell com Shizuku autorizado):
 
-```sh
-adb push . /sdcard/mm-android-debloat
-adb shell sh /sdcard/mm-android-debloat/debloat.sh --dry-run
-adb shell sh /sdcard/mm-android-debloat/debloat.sh
-```
+1. Copie a pasta para `/sdcard/mm-android-debloat`.
+2. Rode `sh /sdcard/mm-android-debloat/debloat.sh --dry-run`.
+3. Rode `sh /sdcard/mm-android-debloat/debloat.sh`.
 
-Pelo aparelho, no aShell (com Shizuku autorizado): abra o terminal e rode `sh /sdcard/mm-android-debloat/debloat.sh --dry-run`.
+Para incluir o `com.motorola.gamemode`, adicione `--com-opcionais` ao comando.
 
-Para reverter tudo:
-
-```sh
-sh /sdcard/mm-android-debloat/revert.sh
-```
+Para reverter tudo: `sh /sdcard/mm-android-debloat/revert.sh`.
 
 ## Antes de rodar
 
